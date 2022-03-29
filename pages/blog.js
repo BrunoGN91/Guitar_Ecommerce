@@ -4,13 +4,13 @@ import Link from 'next/link'
 import Layout from '../components/Layout'
 
 
-const Nosotros = () => {
+const Blog = () => {
   return (
     <Layout
-    pagina="nnosotros"
+    pagina="blog"
     >
-        <h1>Desde nosotros</h1>
+        <h1>Desde blog</h1>
     </Layout>
   )
 }
-export default Nosotros
+export default Blog
