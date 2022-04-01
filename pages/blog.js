@@ -6,8 +6,6 @@ import Entrada from '../components/Entrada'
 import styles from '../styles/Blog.module.css'
 
 
-import {useEffect} from 'react'
-
 const Blog = ({entradas}) => {
 
   return (
@@ -34,7 +32,7 @@ const Blog = ({entradas}) => {
 
 export async function getStaticProps() {
 
-      const url = 'http://localhost:1337/blogs'
+      const url = `${process.env.NEXT_PUBLIC_API_URL}/blogs`
       const respuesta = await fetch(url);
       const entradas = await respuesta.json()
     
