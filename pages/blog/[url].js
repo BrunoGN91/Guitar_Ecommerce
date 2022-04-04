@@ -6,9 +6,11 @@ import styles from "../../styles/Entrada.module.css"
 
 const EntradaBlog = ({ entrada }) => {
 
-  const { contenido, imagen, published_at, titulo} = entrada
+  const { contenido, imagen, published_at, titulo} = entrada[0]
   return (
-      <Layout>
+      <Layout
+      pagina={titulo}
+      >
     <main className='contenedor'>
         <h1 className='heading'>{titulo}</h1>
         <article className='entrada'>
@@ -24,13 +26,13 @@ const EntradaBlog = ({ entrada }) => {
 }
 
 export async function getStaticPaths() {
-    const url = `${process.env.NEXT_PUBLIC_API_URL}/blogs/`
-    const respuesta = await fetch(url);
+    const urlParams = `${process.env.NEXT_PUBLIC_API_URL}/blogs/`
+    const respuesta = await fetch(urlParams);
     const entradas = await respuesta.json();
 
     const paths = entradas.map(entrada => ({
         params: {
-            id: entrada.id.toString()
+            url: entrada.url
         }
     }))
     console.log(paths);
@@ -40,10 +42,10 @@ export async function getStaticPaths() {
     }
 }
 
-export async function getStaticProps ({params: { id }}) {
+export async function getStaticProps ({params: { url }}) {
 
-    const url = `${process.env.NEXT_PUBLIC_API_URL}/blogs/${id}`
-    const respuesta = await fetch(url);
+    const urlParams = `${process.env.NEXT_PUBLIC_API_URL}/blogs?url=${url}`
+    const respuesta = await fetch(urlParams);
     const entrada = await respuesta.json()
   
     return {

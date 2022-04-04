@@ -7,7 +7,7 @@ import styles from '../styles/Entrada.module.css'
 const Entrada = ({entrada}) => {
     
 
-    const { titulo, resumen, imagen, published_at, id } = entrada
+    const { titulo, resumen, imagen, published_at, id, url } = entrada
 
     
   return (
@@ -21,7 +21,7 @@ const Entrada = ({entrada}) => {
         <p className={styles.resumen}>{resumen}</p>
         
         <Link
-        href={`/blog/${id}`}
+        href={`/blog/${url}`}
         >
             <a className={styles.enlace}> Leer Entrada</a>
        
