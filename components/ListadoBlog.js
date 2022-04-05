@@ -13,7 +13,7 @@ const ListadoBlog = ({entradas}) => {
         {entradas.map(entrada => (
           <Entrada
           entrada={entrada}
-          key={entrada._id}
+          key={entrada.id}
           />
         ))}
           </div>

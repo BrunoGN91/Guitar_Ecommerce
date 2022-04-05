@@ -18,9 +18,9 @@ function MyApp({ Component, pageProps }) {
 
 
   const agregarCarrito = (producto) => {
-    if(carrito.some(articulo => articulo._id === producto._id)) {
+    if(carrito.some(articulo => articulo.id === producto.id)) {
       const carritoActualizado = carrito.map(articulo => {
-        if(articulo._id === producto._id) {
+        if(articulo.id === producto.id) {
           articulo.cantidad = producto.cantidad
         }
         return articulo;
@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps }) {
 
   const actualizarCantidad = (producto) => {
     const carritoActualizado = carrito.map(articulo => {
-      if(articulo._id === producto._id) {
+      if(articulo.id === producto.id) {
         articulo.cantidad = producto.cantidad
       }
       return articulo;
@@ -43,7 +43,7 @@ function MyApp({ Component, pageProps }) {
 
   const eliminarHandle = (id) => {
         const nuevaListaCarrito = carrito.filter(producto => {
-          if(producto._id !== id) {
+          if(producto.id !== id) {
             return carrito
           }
         })
